@@ -1,0 +1,32 @@
+import numpy as np
+import plotly.graph_objects as go
+
+# Parameter GHS
+A = 0.05  # Amplitudo (meter)
+T = 10    # Periode (detik)
+t_maks = 50  # Waktu total (detik)
+
+# Menentukan array waktu
+t = np.linspace(0, t_maks, 1000)  # 1000 titik data untuk waktu 0 hingga 50 detik
+
+# Menentukan persamaan GHS
+y = A * np.sin((2 * np.pi / T) * t)  # Simpangan y terhadap waktu t
+
+# Membuat plot menggunakan Plotly
+fig = go.Figure()
+
+# Trace untuk simpangan
+fig.add_trace(go.Scatter(x=t, y=y, mode="lines", name="Simpangan"))
+
+# Kustomisasi tampilan grafik
+fig.update_layout(
+    title="Gerak Harmonik Sederhana",
+    xaxis_title="Waktu (t) [detik]",
+    yaxis_title="Simpangan (y) [meter]",
+    xaxis=dict(showgrid=True),
+    yaxis=dict(showgrid=True),
+    template="plotly_white"
+)
+
+# Menampilkan grafik
+fig.show()
