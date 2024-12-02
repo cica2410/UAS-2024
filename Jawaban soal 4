@@ -1,0 +1,24 @@
+import numpy as np
+from scipy.integrate import cumulative_trapezoid
+import matplotlib.pyplot as plt
+
+# Parameter masalah
+s_maks = 30  # Jarak maksimum perpindahan
+
+# Membuat array posisi x dari 0 hingga s_maks (30 meter)
+x = np.linspace(0, s_maks, 100)
+
+# Gaya F(x) sesuai dengan persamaan F(x) = 2x^2 + 4x + 2
+F = 2 * x**2 + 4 * x + 2
+
+# Menghitung usaha W menggunakan integral numerik (metode trapezoidal)
+W = cumulative_trapezoid(F, x, initial=0)
+
+# Visualisasi grafik usaha W terhadap perpindahan x
+plt.plot(x, W, color="g", linestyle="-", label="W = integral F(x) dx")
+plt.xlabel("Perpindahan (x) [m]")
+plt.ylabel("Usaha (W) [Joule]")
+plt.title("Grafik Usaha Oleh Gaya Tidak Konstan")
+plt.legend()
+plt.grid(True)
+plt.show()
