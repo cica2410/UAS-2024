@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameter
+k = 60  # konstanta pegas (N/m)
+x = np.arange(0, 0.52, 0.02)  # posisi x dari 0 hingga 0.5 m dengan Δx = 0.02
+F = -k * x  # hitung gaya F(x)
+
+# Tampilkan tabel x dan F(x)
+print("x (m)     F(x) (N)")
+for i in range(len(x)):
+    print(f"{x[i]:.2f}      {F[i]:.2f}")
+
+# Plot grafik F(x) terhadap x
+plt.plot(x, F, marker='o', color='blue', label='F(x) = -kx')
+plt.title("Grafik Gaya Pegas F(x) terhadap Posisi x")
+plt.xlabel("Posisi x (m)")
+plt.ylabel("Gaya F(x) (N)")
+plt.grid()
+plt.legend()
+plt.show()
